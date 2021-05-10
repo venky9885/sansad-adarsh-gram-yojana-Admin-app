@@ -35,6 +35,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   firebase_storage.FirebaseStorage.instance;
   firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
     .ref(timeKey.toString() + ".jpg");*/
+  // ignore: missing_return
   Future<String> uploadFile(String pt, Uint8List file) async {
     // String fl = timeKey.toString() + ".jpg";
     //String tc;
@@ -95,6 +96,7 @@ class MyCustomFormState extends State<MyCustomForm> {
     //   });
     // }
 //await j.uploadImage(){}
+    // ignore: missing_return
     Future<Uint8List> uplImg() async {
       FilePickerResult res;
 
@@ -224,97 +226,129 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 50,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(
+          height: 50,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              //padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+              child: ElevatedButton(
+                child: Text('  Upload Notifications Pics  '),
+                onPressed: () {
+                  //_submitForm();
+                  uploadImage();
+                  FocusScope.of(context).unfocus();
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.purple,
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                    textStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
-              Container(
-                //padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-                child: ElevatedButton(
-                  child: Text('  Upload Notifications Pics  '),
-                  onPressed: () {
-                    //_submitForm();
-                    uploadImage();
-                    FocusScope.of(context).unfocus();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.purple,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 50,
+        ),
+        Divider(
+          color: Colors.black,
+          height: 10,
+          thickness: 1,
+        ),
+        Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: villageCount,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Enter integer';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.add_circle),
+                  hintText: 'Enter no of villages Adapted',
+                  labelText: 'Village count',
                 ),
+              ),
+              TextFormField(
+                controller: mpCount,
+                validator: (value) {
+                  if (value.isEmpty | (int.parse(value) > 99)) {
+                    return 'Enter Valid count';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                    //contentPadding: EdgeInsets.only(left: 16, right: 16),
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(16.0),
+                    // ),
+                    icon: const Icon(Icons.calendar_today),
+                    hintText: 'Enter your date of birth',
+                    labelText: 'Mp count'),
               ),
             ],
           ),
-          SizedBox(
-            height: 50,
+        ),
+        /*TextFormField(
+          controller: mpCount,
+          validator: (value) {
+            if (value.isEmpty | (int.parse(value) > 99)) {
+              return 'Enter Valid count';
+            }
+            return null;
+          },
+          /*decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(left: 16, right: 16),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              labelText: 'Email'),*/
+          decoration: const InputDecoration(
+            icon: const Icon(Icons.add_alert),
+            contentPadding:
+                                  EdgeInsets.only(left: 16, right: 16),
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
+                              /*border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),*/
+            //hintText: 'Enter number of Mps',
+            labelText: 'Mp count',
           ),
-          Divider(
-            color: Colors.black,
-            height: 10,
-            thickness: 1,
-          ),
-          TextFormField(
-            controller: villageCount,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Enter integer';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              icon: const Icon(Icons.add_circle),
-              hintText: 'Enter no of villages Adapted',
-              labelText: 'Village count',
-            ),
-          ),
-          TextFormField(
-            controller: mpCount,
-            validator: (value) {
-              if (value.isEmpty | (int.parse(value) > 99)) {
-                return 'Enter Valid count';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              icon: const Icon(Icons.add_alert),
-              hintText: 'Enter number of Mps',
-              labelText: 'Mp count',
-            ),
-          ),
-          // TextFormField(
-          //   decoration: const InputDecoration(
-          //     icon: const Icon(Icons.calendar_today),
-          //     hintText: 'Enter your date of birth',
-          //     labelText: 'Dob',
-          //   ),
-          // ),
-          new Container(
-              padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-              child: new ElevatedButton(
-                child: const Text('Submit'),
-                onPressed: () {
-                  addUser(
-                      int.parse(villageCount.text), int.parse(mpCount.text));
-                  mpCount.clear();
-                  villageCount.clear();
-                  FocusScope.of(context).unfocus();
-                },
-              )),
-        ],
-      ),
+        ),*/
+        // TextFormField(
+        //   decoration: const InputDecoration(
+        //     icon: const Icon(Icons.calendar_today),
+        //     hintText: 'Enter your date of birth',
+        //     labelText: 'Dob',
+        //   ),
+        // ),
+        new Container(
+            padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+            child: new ElevatedButton(
+              child: const Text('Submit'),
+              onPressed: () {
+                addUser(int.parse(villageCount.text), int.parse(mpCount.text));
+                mpCount.clear();
+                villageCount.clear();
+                FocusScope.of(context).unfocus();
+              },
+            )),
+      ],
     );
   }
 }

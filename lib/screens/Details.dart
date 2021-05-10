@@ -81,133 +81,140 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
           key: _scaffoldKey,
           body: SingleChildScrollView(
-            child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Form(
-                    key: _formKey,
-                    child: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          TextFormField(
-                            controller: nameController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Enter Valid Name';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: 16, right: 16),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                labelText: 'Village Name'),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            controller: issController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Enter Valid mail';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: 16, right: 16),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                labelText: 'Email'),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            controller: regnoController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Enter Valid Name';
-                              }
-                              return null;
-                            },
-                            // validator: (value) {
-                            //   if (value.trim().length != 10) {
-                            //     return 'Enter Phone Number';
-                            //   }
-                            //   return null;
-                            // },
-                            // keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  EdgeInsets.only(left: 16, right: 16),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16.0),
+            child: Center(
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Form(
+                      key: _formKey,
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 450,
+                          width: 350,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              TextFormField(
+                                controller: nameController,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Enter Valid Name';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(left: 16, right: 16),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    labelText: 'Village Name'),
                               ),
-                              labelText: 'Mp Name',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            controller: secController,
-                            //textInputAction: ,
-                            maxLines: 6,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Enter Correctly';
-                              }
-                              return null;
-                            },
-                            keyboardType: TextInputType.multiline,
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.only(left: 16, right: 16),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              TextFormField(
+                                controller: issController,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Enter Valid mail';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(left: 16, right: 16),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    labelText: 'Email'),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              TextFormField(
+                                controller: regnoController,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Enter Valid Name';
+                                  }
+                                  return null;
+                                },
+                                // validator: (value) {
+                                //   if (value.trim().length != 10) {
+                                //     return 'Enter Phone Number';
+                                //   }
+                                //   return null;
+                                // },
+                                // keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                      EdgeInsets.only(left: 16, right: 16),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
+                                  labelText: 'Mp Name',
                                 ),
-                                labelText:
-                                    'Enter the field names that \n are taken for developement'),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              TextFormField(
+                                controller: secController,
+                                //textInputAction: ,
+                                maxLines: 6,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Enter Correctly';
+                                  }
+                                  return null;
+                                },
+                                keyboardType: TextInputType.multiline,
+                                decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.only(left: 16, right: 16),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    labelText:
+                                        'Enter the field names that \n are taken for developement'),
+                              ),
+                              // TextFormField(
+                              //   controller: issController,
+                              //   //textInputAction: ,
+                              //   maxLines: 6,
+                              //   validator: (value) {
+                              //     if (value.isEmpty) {
+                              //       return 'Enter any issue';
+                              //     }
+                              //     return null;
+                              //   },
+                              //   keyboardType: TextInputType.multiline,
+                              //   decoration:
+                              //       InputDecoration(labelText: 'Request a service'),
+                              // ),
+                            ],
                           ),
-                          // TextFormField(
-                          //   controller: issController,
-                          //   //textInputAction: ,
-                          //   maxLines: 6,
-                          //   validator: (value) {
-                          //     if (value.isEmpty) {
-                          //       return 'Enter any issue';
-                          //     }
-                          //     return null;
-                          //   },
-                          //   keyboardType: TextInputType.multiline,
-                          //   decoration:
-                          //       InputDecoration(labelText: 'Request a service'),
-                          // ),
-                        ],
-                      ),
-                    )),
-                ElevatedButton(
-                  child: Text('Submit'),
-                  onPressed: () {
-                    _submitForm();
-                    FocusScope.of(context).unfocus();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                ),
-              ],
+                        ),
+                      )),
+                  ElevatedButton(
+                    child: Text('Submit'),
+                    onPressed: () {
+                      _submitForm();
+                      FocusScope.of(context).unfocus();
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                        textStyle: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
             ),
           )),
     );

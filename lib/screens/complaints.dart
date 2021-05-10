@@ -20,23 +20,27 @@ class Complaints extends StatelessWidget {
 
         return new ListView(
           children: snapshot.data.docs.map((DocumentSnapshot document) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.black, width: 1),
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: new ListTile(
-                title: new Text(
-                  'Action Required : ' + document.data()['actionreq'],
-                  style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+            return Container(
+              width: 290,
+              height: 100,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.black, width: 1),
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-                subtitle: new Text(
-                  'Village      :  ' +
-                      document.data()['village'] +
-                      '\n' +
-                      'Ph name :   ' +
-                      document.data()['phnum'],
-                  style: TextStyle(fontSize: 16, color: Colors.green),
+                child: new ListTile(
+                  title: new Text(
+                    'Action Required : ' + document.data()['actionreq'],
+                    style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+                  ),
+                  subtitle: new Text(
+                    'Village      :  ' +
+                        document.data()['village'] +
+                        '\n' +
+                        'Ph name :   ' +
+                        document.data()['phnum'],
+                    style: TextStyle(fontSize: 16, color: Colors.green),
+                  ),
                 ),
               ),
             );
